@@ -33,7 +33,7 @@ void loop()
     delay(500);
   } else {
     Serial.println("All Quiet..."); 
-    display.write("All Quiet...   ");
+    display.write("All Quiet...    ");
     delay(50);
   }
 }

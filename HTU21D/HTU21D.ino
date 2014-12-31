@@ -51,6 +51,6 @@ void loop()
   display.write(254); // move cursor to beginning of first line
   display.write(128);
 
-  delay(100);
+  delay(250);
 }
 

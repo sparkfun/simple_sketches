@@ -1,4 +1,4 @@
-// flex resistor example
+// pressure resistor example
 #include <SoftwareSerial.h>
 
 SoftwareSerial display(3, 2);
@@ -25,7 +25,7 @@ void loop()
 {
   flex = analogRead(0);
 
-  degrees = map(flex, 650, 853, 0, 90);
+  degrees = map(flex, 695, 853, 0, 90);
 
   Serial.print(flex);
   Serial.print(" ");

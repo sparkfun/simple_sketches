@@ -7,6 +7,7 @@ MMA8452Q accel; // Default MMA8452Q object create. (Address = 0x1D)
 SoftwareSerial display(3, 2);
 
 const int irPin = A0;
+char tmpstring[10];
 
 void setup()
 {
@@ -32,9 +33,19 @@ void loop()
   accel.read();
 
   int xAcceleration = accel.x; // Read in raw x-axis acceleration data
-  Serial.print("Acceleration on the x-axis is ");
-  Serial.println(xAcceleration);
+  if(xAcceleration > 1000)
+    xAcceleration = 1000;
+  if(xAcceleration < 0)
+    xAcceleration = 0;
 
-  delay(100);
+  int toprint = map(xAcceleration, 0, 1000, 0, 90);
+  sprintf(tmpstring, "%2d", toprint);
+  Serial.print("Acceleration on the x-axis is ");
+  Serial.println(toprint);
+
+  display.write("angle: ");
+  display.write(tmpstring);
+
+  delay(250);
 }
 

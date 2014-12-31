@@ -1,17 +1,13 @@
-// PIR example
 #include <SoftwareSerial.h>
 
 SoftwareSerial display(3, 2);
 
-const int irPin = A5;
-
-void setup()
-{
-  pinMode(irPin, INPUT);
-
-  display.begin(9600);
+void setup(void) {
   Serial.begin(9600);
-  delay(500);
+  display.begin(9600);
+
+  pinMode(4, INPUT);
+  digitalWrite(4, HIGH);
 
   display.write(254); // move cursor to beginning of first line
   display.write(128);
@@ -20,18 +16,16 @@ void setup()
   display.write("                ");
 }
 
-void loop()
-{
+void loop(void) {
   display.write(254); // move cursor to beginning of first line
   display.write(128);
 
-  int val = digitalRead(irPin);
+  if(digitalRead(4)) {
+    display.write("tilted!");
+  } else {
+    display.write("upright");
+  }
 
-  if(val)
-    display.write("All Clear       ");
-  else
-    display.write("Gate Obstructed!");
-
-  delay(50);
+  delay(20);
 }
 
