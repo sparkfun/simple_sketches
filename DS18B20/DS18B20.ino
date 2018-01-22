@@ -79,5 +79,7 @@ float getTemp(){
   float tempRead = ((MSB << 8) | LSB); //using two's compliment
   float TemperatureSum = tempRead / 16;
 
-  return (TemperatureSum * 18 + 5)/10 + 32;
+  return (TemperatureSum); // For really returning °C
+  // return (TemperatureSum * 1.8 + 32); // Use this return to correctly return °F
+  // https://www.rapidtables.com/convert/temperature/how-celsius-to-fahrenheit.html
 }
