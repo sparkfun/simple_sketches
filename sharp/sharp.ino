@@ -20,11 +20,11 @@ void loop(void) {
 
   int reading = analogRead(A5);
 
-  int calculated = (6762/(reading-9))-4;
+  float calculated = (6000/(float)(reading-9))-3.2;
 
   Serial.println(calculated);
 
-  sprintf(cmstring, "%3d", calculated);
+  sprintf(cmstring, "%.3f", calculated);
   display.write("distance: ");
   display.write(cmstring);
   display.write("cm");
